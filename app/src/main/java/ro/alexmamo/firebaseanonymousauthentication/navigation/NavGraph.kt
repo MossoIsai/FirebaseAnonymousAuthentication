@@ -13,7 +13,7 @@ import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.AuthScreen
 import ro.alexmamo.firebaseanonymousauthentication.presentation.profile.ProfileScreen
 
 @Composable
-@OptIn(ExperimentalAnimationApi::class)
+@ExperimentalAnimationApi
 fun NavGraph (
     navController: NavHostController
 ) {
