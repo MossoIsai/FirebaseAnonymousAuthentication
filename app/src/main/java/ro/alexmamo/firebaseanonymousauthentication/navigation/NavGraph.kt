@@ -7,9 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
-import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.AuthScreen
 import ro.alexmamo.firebaseanonymousauthentication.navigation.Screen.AuthScreen
 import ro.alexmamo.firebaseanonymousauthentication.navigation.Screen.ProfileScreen
+import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.AuthScreen
 import ro.alexmamo.firebaseanonymousauthentication.presentation.profile.ProfileScreen
 
 @Composable

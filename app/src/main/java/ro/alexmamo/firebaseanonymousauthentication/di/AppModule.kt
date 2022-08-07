@@ -28,7 +28,6 @@ class AppModule {
     ) = UseCases(
         isUserAuthenticated = IsUserAuthenticated(repo),
         signInAnonymously = SignInAnonymously(repo),
-        signOut = SignOut(repo),
-        getAuthState = GetAuthState(repo)
+        signOut = SignOut(repo)
     )
 }
