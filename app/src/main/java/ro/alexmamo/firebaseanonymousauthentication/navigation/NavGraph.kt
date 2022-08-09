@@ -1,27 +1,21 @@
 package ro.alexmamo.firebaseanonymousauthentication.navigation
 
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import ro.alexmamo.firebaseanonymousauthentication.navigation.Screen.AuthScreen
 import ro.alexmamo.firebaseanonymousauthentication.navigation.Screen.ProfileScreen
 import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.AuthScreen
 import ro.alexmamo.firebaseanonymousauthentication.presentation.profile.ProfileScreen
 
 @Composable
-@ExperimentalAnimationApi
 fun NavGraph (
     navController: NavHostController
 ) {
-    AnimatedNavHost(
+    NavHost(
         navController = navController,
-        startDestination = AuthScreen.route,
-        enterTransition = { EnterTransition.None },
-        exitTransition = { ExitTransition.None }
+        startDestination = AuthScreen.route
     ) {
         composable(
             route = AuthScreen.route

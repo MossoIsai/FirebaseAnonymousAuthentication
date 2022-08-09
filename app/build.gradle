@@ -52,6 +52,8 @@ android {
 dependencies {
     //ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_version"
+    //Navigation Compose
+    implementation "androidx.navigation:navigation-compose:$navigation_compose_version"
     //Compose
     implementation "androidx.compose.material:material:$compose_version"
     //Hilt
@@ -64,6 +66,4 @@ dependencies {
     implementation "com.google.firebase:firebase-auth-ktx"
     //Play Services
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$play_services_version"
-    //Accompanist
-    implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist_version"
 }

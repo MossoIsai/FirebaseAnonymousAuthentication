@@ -5,8 +5,8 @@ import ro.alexmamo.firebaseanonymousauthentication.core.Constants.TAG
 
 class Utils {
     companion object {
-        fun printMessage(message: String) {
-            Log.d(TAG, message)
+        fun print(e: Exception) {
+            Log.e(TAG, e.message ?: e.toString())
         }
     }
 }

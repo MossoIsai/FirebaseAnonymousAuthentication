@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import ro.alexmamo.firebaseanonymousauthentication.components.ProgressBar
-import ro.alexmamo.firebaseanonymousauthentication.core.Utils.Companion.printMessage
+import ro.alexmamo.firebaseanonymousauthentication.core.Utils.Companion.print
 import ro.alexmamo.firebaseanonymousauthentication.domain.model.Response.*
 import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.components.AuthContent
 import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.components.AuthTopBar
@@ -36,8 +36,8 @@ fun AuthScreen(
                 navigateToProfileScreen()
             }
         }
-        is Error -> LaunchedEffect(Unit) {
-            printMessage(signInResponse.message)
+        is Failure -> LaunchedEffect(Unit) {
+            print(signInResponse.e)
         }
     }
 }

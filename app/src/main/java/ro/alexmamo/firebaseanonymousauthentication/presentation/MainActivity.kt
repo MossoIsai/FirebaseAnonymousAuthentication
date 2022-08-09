@@ -4,16 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavHostController
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ro.alexmamo.firebaseanonymousauthentication.navigation.NavGraph
 import ro.alexmamo.firebaseanonymousauthentication.navigation.Screen.ProfileScreen
 import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.AuthViewModel
 
 @AndroidEntryPoint
-@ExperimentalAnimationApi
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
     private val viewModel by viewModels<AuthViewModel>()
@@ -21,7 +19,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            navController = rememberAnimatedNavController()
+            navController = rememberNavController()
             NavGraph(
                 navController = navController
             )
@@ -31,7 +29,9 @@ class MainActivity : ComponentActivity() {
 
     private fun checkAuthState() {
         if(viewModel.isUserAuthenticated) {
-            navController.navigate(ProfileScreen.route)
+            navigateToProfileScreen()
         }
     }
+
+    private fun navigateToProfileScreen() = navController.navigate(ProfileScreen.route)
 }

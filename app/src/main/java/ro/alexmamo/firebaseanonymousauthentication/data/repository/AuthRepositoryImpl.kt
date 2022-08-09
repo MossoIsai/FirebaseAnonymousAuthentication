@@ -20,7 +20,7 @@ class AuthRepositoryImpl  @Inject constructor(
             auth.signInAnonymously().await()
             emit(Success(true))
         } catch (e: Exception) {
-            emit(Error(e.message ?: e.toString()))
+            emit(Failure(e))
         }
     }
 
@@ -30,7 +30,7 @@ class AuthRepositoryImpl  @Inject constructor(
             auth.currentUser?.delete()?.await()
             emit(Success(true))
         } catch (e: Exception) {
-            emit(Error(e.message ?: e.toString()))
+            emit(Failure(e))
         }
     }
 }
