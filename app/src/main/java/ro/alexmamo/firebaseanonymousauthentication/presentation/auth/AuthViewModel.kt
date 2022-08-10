@@ -19,10 +19,18 @@ class AuthViewModel @Inject constructor(
     val isUserAuthenticated get() = useCases.isUserAuthenticated()
     var signInResponse by mutableStateOf<Response<Boolean>>(Success(false))
         private set
+    var signOutResponse by mutableStateOf<Response<Boolean>>(Success(false))
+        private set
 
     fun signIn() = viewModelScope.launch {
         useCases.signInAnonymously().collect { response ->
             signInResponse = response
+        }
+    }
+
+    fun signOut() = viewModelScope.launch {
+        useCases.signOut().collect { response ->
+            signOutResponse = response
         }
     }
 }
