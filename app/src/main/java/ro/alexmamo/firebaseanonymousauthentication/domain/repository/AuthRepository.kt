@@ -6,7 +6,7 @@ import ro.alexmamo.firebaseanonymousauthentication.domain.model.Response
 interface AuthRepository {
     val isUserAuthenticatedInFirebase: Boolean
 
-    suspend fun firebaseSignInAnonymously(): Flow<Response<Boolean>>
+    fun firebaseSignInAnonymously(): Flow<Response<Boolean>>
 
-    suspend fun signOut(): Flow<Response<Boolean>>
+    fun signOut(): Flow<Response<Boolean>>
 }

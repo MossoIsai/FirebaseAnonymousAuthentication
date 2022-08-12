@@ -14,7 +14,7 @@ class AuthRepositoryImpl  @Inject constructor(
 ): AuthRepository {
     override val isUserAuthenticatedInFirebase = auth.currentUser != null
 
-    override suspend fun firebaseSignInAnonymously() = flow {
+    override fun firebaseSignInAnonymously() = flow {
         try {
             emit(Loading)
             auth.signInAnonymously().await()
@@ -24,7 +24,7 @@ class AuthRepositoryImpl  @Inject constructor(
         }
     }
 
-    override suspend fun signOut() = flow {
+    override fun signOut() = flow {
         try {
             emit(Loading)
             auth.currentUser?.delete()?.await()
