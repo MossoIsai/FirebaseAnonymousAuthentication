@@ -4,20 +4,18 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 import ro.alexmamo.firebaseanonymousauthentication.domain.model.Response.Failure
 import ro.alexmamo.firebaseanonymousauthentication.domain.model.Response.Success
-import ro.alexmamo.firebaseanonymousauthentication.domain.repository.AuthRepository
-import ro.alexmamo.firebaseanonymousauthentication.domain.repository.SignInResponse
+import ro.alexmamo.firebaseanonymousauthentication.domain.repository.ProfileRepository
+import ro.alexmamo.firebaseanonymousauthentication.domain.repository.SignOutResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AuthRepositoryImpl  @Inject constructor(
+class ProfileRepositoryImpl  @Inject constructor(
     private val auth: FirebaseAuth
-): AuthRepository {
-    override val isUserAuthenticatedInFirebase = auth.currentUser != null
-
-    override suspend fun firebaseSignInAnonymously(): SignInResponse {
+): ProfileRepository {
+    override suspend fun signOut(): SignOutResponse {
         return try {
-            auth.signInAnonymously().await()
+            auth.currentUser?.delete()?.await()
             Success(true)
         } catch (e: Exception) {
             Failure(e)

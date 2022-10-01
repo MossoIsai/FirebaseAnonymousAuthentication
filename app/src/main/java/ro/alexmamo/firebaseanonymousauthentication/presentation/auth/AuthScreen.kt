@@ -2,13 +2,10 @@ package ro.alexmamo.firebaseanonymousauthentication.presentation.auth
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import ro.alexmamo.firebaseanonymousauthentication.components.ProgressBar
-import ro.alexmamo.firebaseanonymousauthentication.core.Utils.Companion.print
-import ro.alexmamo.firebaseanonymousauthentication.domain.model.Response.*
 import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.components.AuthContent
 import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.components.AuthTopBar
+import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.components.SignIn
 
 @Composable
 fun AuthScreen(
@@ -28,16 +25,11 @@ fun AuthScreen(
             )
         }
     )
-
-    when(val signInResponse = viewModel.signInResponse) {
-        is Loading -> ProgressBar()
-        is Success -> if (signInResponse.data) {
-            LaunchedEffect(signInResponse.data) {
+    SignIn(
+        navigateToProfileScreen = { signedIn ->
+            if (signedIn) {
                 navigateToProfileScreen()
             }
         }
-        is Failure -> LaunchedEffect(Unit) {
-            print(signInResponse.e)
-        }
-    }
+    )
 }
