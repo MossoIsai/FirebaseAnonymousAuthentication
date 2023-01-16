@@ -47,12 +47,9 @@ android {
 }
 
 dependencies {
-    //ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_version"
-    //Navigation Compose
-    implementation "androidx.navigation:navigation-compose:$navigation_compose_version"
     //Compose
-    implementation "androidx.compose.material:material:$material_version"
+    implementation platform("androidx.compose:compose-bom:$compose_bom_version")
+    implementation "androidx.compose.material:material"
     //Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
@@ -61,6 +58,4 @@ dependencies {
     //Firebase
     implementation platform("com.google.firebase:firebase-bom:$firebase_bom_version")
     implementation "com.google.firebase:firebase-auth-ktx"
-    //Play Services
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$play_services_version"
 }
