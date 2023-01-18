@@ -1,7 +1,7 @@
 package ro.alexmamo.firebaseanonymousauthentication.domain.use_case
 
 data class UseCases(
-    val isUserAuthenticated: IsUserAuthenticated,
-    val signInAnonymously: SignInAnonymously,
+    val getAuthState: GetAuthState,
+    val signIn: SignIn,
     val signOut: SignOut
 )

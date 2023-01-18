@@ -6,11 +6,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.components.AuthContent
 import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.components.AuthTopBar
 import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.components.SignIn
+import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.components.SignOut
 
 @Composable
 fun AuthScreen(
-    viewModel: AuthViewModel = hiltViewModel(),
-    navigateToProfileScreen: () -> Unit
+    viewModel: AuthViewModel = hiltViewModel()
 ) {
     Scaffold(
         topBar = {
@@ -25,11 +25,6 @@ fun AuthScreen(
             )
         }
     )
-    SignIn(
-        navigateToProfileScreen = { signedIn ->
-            if (signedIn) {
-                navigateToProfileScreen()
-            }
-        }
-    )
+    SignIn()
+    SignOut()
 }

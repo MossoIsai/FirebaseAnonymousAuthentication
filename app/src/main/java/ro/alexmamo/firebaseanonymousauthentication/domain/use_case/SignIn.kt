@@ -2,8 +2,8 @@ package ro.alexmamo.firebaseanonymousauthentication.domain.use_case
 
 import ro.alexmamo.firebaseanonymousauthentication.domain.repository.AuthRepository
 
-class IsUserAuthenticated(
-    private val repository: AuthRepository
+class SignIn(
+    private val repo: AuthRepository
 ) {
-    operator fun invoke() = repository.isUserAuthenticatedInFirebase
+    suspend operator fun invoke() = repo.firebaseSignInAnonymously()
 }

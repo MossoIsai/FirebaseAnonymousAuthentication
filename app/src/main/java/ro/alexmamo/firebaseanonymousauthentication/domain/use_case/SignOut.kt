@@ -1,9 +1,9 @@
 package ro.alexmamo.firebaseanonymousauthentication.domain.use_case
 
-import ro.alexmamo.firebaseanonymousauthentication.domain.repository.ProfileRepository
+import ro.alexmamo.firebaseanonymousauthentication.domain.repository.AuthRepository
 
 class SignOut(
-    private val repository: ProfileRepository
+    private val repo: AuthRepository
 ) {
-    suspend operator fun invoke() = repository.signOut()
+    suspend operator fun invoke() = repo.firebaseSignOut()
 }

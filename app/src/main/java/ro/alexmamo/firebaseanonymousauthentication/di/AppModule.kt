@@ -8,11 +8,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ro.alexmamo.firebaseanonymousauthentication.data.repository.AuthRepositoryImpl
-import ro.alexmamo.firebaseanonymousauthentication.data.repository.ProfileRepositoryImpl
 import ro.alexmamo.firebaseanonymousauthentication.domain.repository.AuthRepository
-import ro.alexmamo.firebaseanonymousauthentication.domain.repository.ProfileRepository
-import ro.alexmamo.firebaseanonymousauthentication.domain.use_case.IsUserAuthenticated
-import ro.alexmamo.firebaseanonymousauthentication.domain.use_case.SignInAnonymously
+import ro.alexmamo.firebaseanonymousauthentication.domain.use_case.GetAuthState
+import ro.alexmamo.firebaseanonymousauthentication.domain.use_case.SignIn
 import ro.alexmamo.firebaseanonymousauthentication.domain.use_case.SignOut
 import ro.alexmamo.firebaseanonymousauthentication.domain.use_case.UseCases
 
@@ -28,17 +26,11 @@ class AppModule {
     ): AuthRepository = AuthRepositoryImpl(auth)
 
     @Provides
-    fun provideProfileRepository(
-        auth: FirebaseAuth
-    ): ProfileRepository = ProfileRepositoryImpl(auth)
-
-    @Provides
     fun provideUseCases(
-        authRepo: AuthRepository,
-        profileRepo: ProfileRepository
+        repo: AuthRepository
     ) = UseCases(
-        isUserAuthenticated = IsUserAuthenticated(authRepo),
-        signInAnonymously = SignInAnonymously(authRepo),
-        signOut = SignOut(profileRepo)
+        getAuthState = GetAuthState(repo),
+        signIn = SignIn(repo),
+        signOut = SignOut(repo)
     )
 }

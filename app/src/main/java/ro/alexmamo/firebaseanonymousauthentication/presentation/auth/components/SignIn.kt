@@ -10,16 +10,11 @@ import ro.alexmamo.firebaseanonymousauthentication.presentation.auth.AuthViewMod
 
 @Composable
 fun SignIn(
-    viewModel: AuthViewModel = hiltViewModel(),
-    navigateToProfileScreen: (signedIn: Boolean) -> Unit
+    viewModel: AuthViewModel = hiltViewModel()
 ) {
     when(val signInResponse = viewModel.signInResponse) {
         is Loading -> ProgressBar()
-        is Success -> signInResponse.data.let { signedIn ->
-            LaunchedEffect(signedIn) {
-                navigateToProfileScreen(signedIn)
-            }
-        }
+        is Success -> Unit
         is Failure -> LaunchedEffect(Unit) {
             print(signInResponse.e)
         }
